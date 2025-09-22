@@ -5,11 +5,18 @@
 # include <string>
 # include <vector>
 # include <limits>
+# include <cstdlib>
+# include <ctime>
 
 // COLORS
 # define RED "\e[1;91m"
-# define YELLOW "\e[1;33m"
 # define BLUE "\e[1;34m"
+# define YELLOW "\e[1;33m"
+# define GREEN  "\e[1;92m"
+# define CYAN   "\e[1;36m"
+# define MAGENTA "\e[1;95m"
+# define WHITE   "\e[1;97m"
+# define ORANGE  "\e[38;5;208m"
 # define RESET "\033[0m"
 
 // BRICK & WALL INFO
@@ -44,11 +51,14 @@ class Wall {
         std::vector<std::pair<std::vector<int>, int>> wallMap;
         int fullHeight;
         int fullRow;
+        std::vector<std::vector<std::string>> color;
 
         // Constructor
         Wall(int height, int row) : fullHeight(height), fullRow(row) {
             for (int i = 0; i < height; i++)
                 wallMap.push_back({ std::vector<int>(row, 0), 0 });
+            for (int i = 0; i < height; i++)
+                color.push_back(std::vector<std::string>(row, ""));
         }
         
         // Member functions
@@ -58,7 +68,7 @@ class Wall {
         void checkWallLenght(int wallHei, bool direction, int robotRow, int robotBuiltHeight, int start);
         void strechAlgorithm(int robotRow, int robotMaxHeight);
 
-        void put_brick(int row, int index);
+        void put_brick(int row, int index, const std::string& color);
         void trianglePattern(int robotRow, int robotBuiltHeight, int start);
         void trianglePatternRevers(int robotRow, int robotBuiltHeight, int start);
         void twoLinePattern(int robotRow, int start);
