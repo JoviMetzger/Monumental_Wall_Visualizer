@@ -23,7 +23,7 @@ brew install gcc make
 <br>
 
 #### 2. Build the project
-From the root of thr project:
+From the root of the project:
 ```bash
 make
 ```
