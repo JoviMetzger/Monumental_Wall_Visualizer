@@ -20,9 +20,11 @@ void Wall::checkWallLenght(int wallHei, bool direction, int robotRow, int robotB
     // wallHei is the height that pattern needs to fill
     int len = fullRow / robotRow;
     int tri = 0;
+    
     if (wallHei == 4)
-        tri = -1;
-    for (int i = 1; i <= len - tri; i++)
+        tri = 1;
+
+    for (int i = 1; i <= (len - tri); i++)
     {
         if (wallHei == 4)
         {
