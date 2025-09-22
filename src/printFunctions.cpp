@@ -17,7 +17,7 @@ void Wall::print_wall()
                 if (wallMap[i].first[j] == 0)
                     rowData += FULL_DESIGN + MORTAR;
                 else
-                    rowData += FULL_BUILT + MORTAR;
+                    rowData += color[i][j] + FULL_BUILT + RESET + MORTAR;
             }
         }
         else
@@ -26,13 +26,13 @@ void Wall::print_wall()
             if (wallMap[i].first[0] == 0)
                 rowData += HALF_DESIGN + MORTAR;
             else
-                rowData += HALF_BUILT + MORTAR;
+                rowData += color[i][0] + HALF_BUILT + RESET + MORTAR;
             for (int k = 1; k < Wall::fullRow; k++)
             {   
                 if (wallMap[i].first[k] == 0)
                     rowData += FULL_DESIGN + MORTAR;
                 else
-                    rowData += FULL_BUILT + MORTAR;
+                    rowData += color[i][k] + FULL_BUILT + RESET + MORTAR;
             }  
         }
 
@@ -60,4 +60,21 @@ void Wall::debugPrint()
         
         std::cout << " -> value: " << it->second << " (row: " << rowIndex << ")\n";
     }
+
+    // // Color Check
+    // std::cout << "Colour:" << std::endl;
+    // int rowCol = color.size() - 1;
+    // for (auto it = color.rbegin(); it != color.rend(); ++it, --rowCol) 
+    // {
+    //     for (const auto &brickColor : *it) 
+    //     {
+    //         if (brickColor.empty())
+    //             std::cout << "[-] ";  // marker for empty
+    //         else
+    //             std::cout << brickColor << "[] " << RESET;
+    //     }
+    //     std::cout << "\n";
+    // }
+    // std::cout << "\n\n";
+
 }
